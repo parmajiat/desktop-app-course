@@ -1,18 +1,57 @@
 ﻿<Window x:Class="DesktopApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DesktopApp"
         Title="MainWindow" Height="400" Width="500">
+    <Window.Resources>
+        <local:Employee FirstName="Tarek" x:Key="employee"/>
+    </Window.Resources>
+<Window.DataContext>
+    <local:Employee FirstName="Zaid" LastName="Amr" Title="Engineer" 
+                    HireDate="01/01/2018" Address="Al Rayyan" City="Doha"
+                    Country="Qatar"/>
+</Window.DataContext>
     <Grid>
-        <Button Background="Red" Foreground="#FFFFFFFF" Name="leftTopButton" Content="Left Top" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button Content="Left Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Button Content="Left Bottom" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        
-        <Button Content="Center Top" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Button Content="Center Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Content="Center Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-        
-        <Button Content="Right Top" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-        <Button Content="Right Center" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <Button Content="Right Bottom" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+<Label Grid.Row="0" Grid.Column="0" Content="First name"/>
+<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ElementName=employee, Path=FirstName}"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Last name"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Title"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Title}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Birth date"/>
+        <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding BirthDate}"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Hire date"/>
+        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding HireDate}"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="Address"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Address}"/>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="City"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding City}"/>
+
+        <Label Grid.Row="7" Grid.Column="0" Content="Country"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Country}"/>
+
+        <Label Grid.Row="8" Grid.Column="0" Content="Notes"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Notes}"/>
     </Grid>
 </Window>
